@@ -1,6 +1,8 @@
 /* `@import` must precede all other rules. */
 @import "@fontsource-variable/newsreader/wght.css";
 @import "@fontsource-variable/newsreader/wght-italic.css";
+@import "@fontsource-variable/space-grotesk/wght.css";
+/* @import "@fontsource-variable/space-grotesk/wght-italic.css"; */
 @import "@fontsource-variable/inter/wght.css";
 @import "@fontsource-variable/jetbrains-mono/wght.css";
 @import "tailwindcss";
@@ -23,7 +25,7 @@
 @layer base {
 	:root {
 		--font-serif: "Newsreader Variable", "Iowan Old Style", Georgia, serif;
-		--font-sans: "Inter Variable", -apple-system, system-ui, sans-serif;
+		--font-sans: "Space Grotesk Variable", "Inter Variable", -apple-system, system-ui, sans-serif;
 		--font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, monospace;
 
 		/* Layout tokens — shared across home, posts archive, and article pages */

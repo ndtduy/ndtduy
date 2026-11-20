@@ -1,7 +1,7 @@
 ---
 import { showcase } from "@/data/showcase";
 import PageLayout from "@/layouts/Base.astro";
-import { absoluteUrl } from "@/utils/path";
+import { absoluteUrl, withBase } from "@/utils/path";
 import { Schema } from "astro-seo-schema";
 
 const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
@@ -35,21 +35,27 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 			A handful of projects I've built.
 		</p>
 		<ul class="work-list">
-			{
-				showcase.map((item) => (
-					<li>
-						<a href={item.href} rel="noreferrer" target="_blank">
-							<div class="head">
-								<span class="name">{item.name}</span>
-								<span class="stack">{item.stack}</span>
-								{item.badge && <span class="badge">{item.badge}</span>}
-							</div>
-							<p>{item.desc}</p>
-						</a>
-					</li>
-				))
-			}
-		</ul>
+            {
+                showcase.map((item) => (
+                    <li>
+                        <a href={item.href} rel="noreferrer" target="_blank">
+                            <div class="project-image">
+                                <img src={withBase("/social-card.png")} alt={`${item.name} preview`} loading="lazy" />
+                            </div>
+
+                            <div class="project-content">
+                                <div class="head">
+                                    <span class="name">{item.name}</span>
+                                    <span class="stack">{item.stack}</span>
+                                    {item.badge && <span class="badge">{item.badge}</span>}
+                                </div>
+                                <p>{item.desc}</p>
+                            </div>
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
 	</section>
 </PageLayout>
 
@@ -81,4 +87,47 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 			font-size: 16.5px;
 		}
 	}
+	.work-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .work-list li a {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        text-decoration: none;
+    }
+
+    .project-image {
+        flex-shrink: 0;
+        width: 160px;
+        height: 110px;
+        overflow: hidden;
+        border-radius: 8px;
+    }
+
+    .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .project-content {
+        flex: 1;
+        min-width: 0;
+    }
+
+    @media (max-width: 600px) {
+        .work-list li a {
+            gap: 16px;
+        }
+
+        .project-image {
+            width: 110px;
+            height: 85px;
+        }
+    }
 </style>
