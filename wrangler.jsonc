@@ -1,7 +1,7 @@
 {
 	"name": "portfolio",
 	// Set this to today's date
-	"compatibility_date": "2026-11-06",
+	"compatibility_date": "2026-11-20",
 	"routes": [
 		{
 			"pattern": "ndtduy.com",
